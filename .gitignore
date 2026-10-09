@@ -1,0 +1,16 @@
+node_modules/
+*.log
+
+# secrets / local env (standard hygiene). No secret exists today
+# (the server shells to the codex CLI, no API key), but a future .env/key must
+# never be tracked.
+.env
+*.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+
+# gate-due marker (runtime state -- never committed)
+.superpowers/

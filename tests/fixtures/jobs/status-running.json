@@ -1,0 +1,15 @@
+{
+  "job": {
+    "id": "task-r55e1",
+    "kind": "task",
+    "jobClass": "task",
+    "status": "running",
+    "phase": "investigating",
+    "pid": 48212,
+    "threadId": "thread-r5",
+    "createdAt": "2026-07-31T15:00:00.000Z",
+    "startedAt": "2026-07-31T15:00:00.400Z",
+    "elapsed": "0m 47s",
+    "summary": "[task] sample-repo: running - normalize the poll trim"
+  }
+}

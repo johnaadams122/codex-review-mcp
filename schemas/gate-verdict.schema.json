@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://codex-mcp/schemas/gate-verdict.schema.json",
+  "title": "Codex review-gate verdict",
+  "version": "1.1.0",
+  "description": "Shape of a codex_gate / runGate result (extends panel-verdict with phase + strength). Fail-CLOSED: consensus_verdict is pass|block|error; a gate NEVER passes reviewing nothing (no_reviewable_target), below the phase strength floor (strength_below_floor), on a truncated payload, or with a missing/duplicate/unknown backbone reviewer.",
+  "definitions": {
+    "strengthPair": {
+      "type": ["object", "null"],
+      "properties": {
+        "model": { "type": "string" },
+        "effort": { "type": "string" }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "severity": { "enum": ["blocker", "major", "minor"] },
+        "file": { "type": ["string", "null"] },
+        "line": { "type": ["integer", "null"] },
+        "summary": { "type": "string" },
+        "lens": { "type": "string" }
+      },
+      "required": ["severity"],
+      "additionalProperties": true
+    },
+    "reviewer_verdict": {
+      "type": "object",
+      "description": "One reviewer's verdict. role + strength (model/effort) are recorded so a weak pass can never masquerade as a flagship pass.",
+      "properties": {
+        "lens": {
+          "enum": [
+            "correctness", "security-pii", "design-simplicity",
+            "completeness-gaps", "contradictions-ambiguity", "edge-cases-risks",
+            "ordering-dependencies", "test-coverage", "scope-fidelity"
+          ]
+        },
+        "verdict": { "enum": ["pass", "block"] },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "role": { "enum": ["backbone", "advisory"] },
+        "model": { "type": "string" },
+        "effort": { "type": "string" },
+        "strength_attested": { "type": "boolean" },
+        "findings": { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+        "files_checked": { "type": "array", "items": { "type": "string" } },
+        "files_checked_note": { "type": "string" }
+      },
+      "required": ["verdict", "role"],
+      "additionalProperties": true
+    },
+    "abstention": {
+      "type": "object",
+      "properties": {
+        "assignment_id": { "type": "string" },
+        "lens": { "type": ["string", "null"] },
+        "reason": { "enum": ["missing", "submit_failed", "timeout", "error", "poll_error", "result_error", "parse_failed", "strength_unattested"] }
+      }
+    },
+    "strength": {
+      "type": "object",
+      "properties": {
+        "weakest": { "$ref": "#/definitions/strengthPair" },
+        "backbone_weakest": { "$ref": "#/definitions/strengthPair" },
+        "advisory_weakest": { "$ref": "#/definitions/strengthPair" },
+        "backbone_attested": { "type": "boolean" },
+        "floor": { "type": "string" }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "phase": { "enum": ["spec", "plan", "impl"] },
+    "consensus_verdict": { "enum": ["pass", "block", "error"] },
+    "status": {
+      "enum": [
+        "complete", "blocked", "empty_diff", "diff_error", "empty_scope_dirty_tree",
+        "strength_below_floor", "no_reviewable_target", "path_not_contained", "unknown_phase",
+        "mixed_transport_unsupported", "admission_required", "direct_preconditions_unmet",
+        "tree_changed", "payload_parse_error"
+      ]
+    },
+    "reason": { "type": "string" },
+    "project": { "type": "string" },
+    "blockers": { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+    "reviewers": { "type": "array", "items": { "$ref": "#/definitions/reviewer_verdict" } },
+    "findings": { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+    "dissent": { "type": "array" },
+    "abstentions": { "type": "array", "items": { "$ref": "#/definitions/abstention" } },
+    "advisory_ignored": { "type": "array" },
+    "identity_errors": { "type": "array" },
+    "strength_unverified": { "type": "boolean" },
+    "strength": { "$ref": "#/definitions/strength" },
+    "transport": { "enum": ["direct"] }
+  },
+  "required": ["phase", "consensus_verdict"],
+  "additionalProperties": true
+}

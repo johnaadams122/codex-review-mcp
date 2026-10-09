@@ -1,0 +1,42 @@
+{
+  "job": {
+    "id": "review-4b9e02",
+    "kind": "review",
+    "jobClass": "review",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-rv1",
+    "createdAt": "2026-07-29T09:10:00.000Z",
+    "completedAt": "2026-07-29T09:11:04.000Z",
+    "summary": "[review] sample-repo: overall the diff looks safe, one minor nit"
+  },
+  "storedJob": {
+    "id": "review-4b9e02",
+    "kind": "review",
+    "jobClass": "review",
+    "title": "[review] sample-repo",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-rv1",
+    "workspaceRoot": "C:/projects/sample-repo",
+    "createdAt": "2026-07-29T09:10:00.000Z",
+    "startedAt": "2026-07-29T09:10:00.400Z",
+    "completedAt": "2026-07-29T09:11:04.000Z",
+    "summary": "[review] sample-repo: Review working tree vs main",
+    "result": {
+      "review": "Review",
+      "target": { "label": "working tree vs main", "base": "main", "scope": "working-tree" },
+      "threadId": "thread-rv1",
+      "sourceThreadId": null,
+      "codex": {
+        "status": "completed",
+        "stderr": "",
+        "stdout": "STDOUT_FULL_ANSWER_MARKER: Overall the diff looks safe. Findings:\n1) job-guard.mjs: consider renaming `clean` to `sanitized` for clarity (nit, non-blocking).\n2) tests: coverage for the new passthrough fields looks adequate.\n3) No security or correctness blockers found.\nRecommendation: pass.",
+        "reasoning": null
+      }
+    },
+    "rendered": "# Codex Review\n\nSTDOUT_FULL_ANSWER_MARKER: Overall the diff looks safe...\n"
+  }
+}

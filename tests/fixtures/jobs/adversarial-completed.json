@@ -1,0 +1,50 @@
+{
+  "job": {
+    "id": "review-adv-77c1",
+    "kind": "adversarial-review",
+    "jobClass": "review",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-adv1",
+    "createdAt": "2026-07-28T20:00:00.000Z",
+    "completedAt": "2026-07-28T20:03:12.000Z",
+    "summary": "[adversarial-review] sample-repo: verdict pass, no blockers"
+  },
+  "storedJob": {
+    "id": "review-adv-77c1",
+    "kind": "adversarial-review",
+    "jobClass": "review",
+    "title": "[adversarial-review] sample-repo",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-adv1",
+    "workspaceRoot": "C:/projects/sample-repo",
+    "createdAt": "2026-07-28T20:00:00.000Z",
+    "startedAt": "2026-07-28T20:00:00.300Z",
+    "completedAt": "2026-07-28T20:03:12.000Z",
+    "summary": "[adversarial-review] sample-repo: Adversarial Review working tree vs main",
+    "result": {
+      "review": "Adversarial Review",
+      "target": { "label": "working tree vs main", "base": "main", "scope": "working-tree" },
+      "threadId": "thread-adv1",
+      "context": {
+        "repoRoot": "C:/projects/sample-repo",
+        "branch": "feat/tier-normalization-poll-projection",
+        "summary": "3 files changed, 214 insertions(+), 12 deletions(-)"
+      },
+      "codex": {
+        "status": "completed",
+        "stderr": "",
+        "stdout": "SHOULD_NOT_BE_CHOSEN_STDOUT_MARKER: same narrative, reformatted for the transcript.",
+        "reasoning": null
+      },
+      "result": { "lens": "adversarial", "verdict": "pass", "confidence": "high", "findings": [] },
+      "rawOutput": "RAWOUTPUT_ANSWER_MARKER: full adversarial reviewer narrative -- no blockers found, one minor naming nit.",
+      "parseError": null,
+      "reasoningSummary": null
+    },
+    "rendered": "# Codex Adversarial Review\n\nRAWOUTPUT_ANSWER_MARKER: full adversarial reviewer narrative -- no blockers found, one minor naming nit.\n"
+  }
+}

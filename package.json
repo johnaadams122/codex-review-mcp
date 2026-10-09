@@ -1,0 +1,20 @@
+{
+  "name": "codex-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP server that routes tasks and reviews to the Codex CLI, with per-project policy enforcement and an optional local-model tier",
+  "main": "server.mjs",
+  "bin": {
+    "codex-mcp": "./server.mjs"
+  },
+  "scripts": {
+    "test": "node --experimental-test-module-mocks --test tests/*.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.23.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

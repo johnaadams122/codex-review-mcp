@@ -1,0 +1,22 @@
+{
+  "job": {
+    "id": "task-s90c2",
+    "kind": "task",
+    "jobClass": "task",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-s9",
+    "createdAt": "2026-07-27T08:20:00.000Z",
+    "startedAt": "2026-07-27T08:20:00.300Z",
+    "elapsed": "4m 02s",
+    "progressPreview": [
+      "Thread ready (thread-s9).",
+      "Turn started (thread-s9).",
+      "Assistant message captured: normalization landed; poll trim pending review",
+      "Turn completion inferred after the main thread finished and subagent work drained."
+    ],
+    "summary": "normalization landed; poll trim pending review",
+    "_synthesized": true
+  }
+}

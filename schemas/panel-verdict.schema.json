@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://codex-mcp/schemas/panel-verdict.schema.json",
+  "title": "Codex adversarial review panel verdicts",
+  "version": "1.1.0",
+  "description": "Shapes for a single reviewer's verdict and the aggregated panel result. Consensus is fail-CLOSED: pass requires ALL configured reviewers to complete, every reviewer to pass, and zero blocker-severity findings; any abstention/error yields block; all-abstain yields error.",
+  "definitions": {
+    "finding": {
+      "type": "object",
+      "properties": {
+        "severity": { "enum": ["blocker", "major", "minor"] },
+        "file": { "type": ["string", "null"] },
+        "line": { "type": ["integer", "null"] },
+        "summary": { "type": "string" },
+        "lens": { "type": "string" }
+      },
+      "required": ["severity", "summary"],
+      "additionalProperties": true
+    },
+    "reviewer_verdict": {
+      "type": "object",
+      "description": "What each lens reviewer emits (JSON only, no prose).",
+      "properties": {
+        "lens": { "enum": ["correctness", "security-pii", "design-simplicity"] },
+        "verdict": { "enum": ["pass", "block"] },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "findings": { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+        "files_checked": { "type": "array", "items": { "type": "string" } },
+        "files_checked_note": { "type": "string" }
+      },
+      "required": ["lens", "verdict"],
+      "additionalProperties": true
+    },
+    "abstention": {
+      "type": "object",
+      "properties": {
+        "assignment_id": { "type": "string" },
+        "lens": { "type": ["string", "null"] },
+        "reason": { "enum": ["missing", "submit_failed", "timeout", "error", "poll_error", "result_error", "parse_failed", "strength_unattested"] }
+      }
+    }
+  },
+  "type": "object",
+  "description": "panel_result: what aggregate() / runPanel() returns.",
+  "properties": {
+    "consensus_verdict": { "enum": ["pass", "block", "error"] },
+    "status": {
+      "enum": [
+        "complete", "blocked", "empty_diff", "diff_error", "empty_scope_dirty_tree",
+        "mixed_transport_unsupported", "admission_required", "direct_preconditions_unmet",
+        "tree_changed", "payload_parse_error"
+      ]
+    },
+    "reviewers": { "type": "array", "items": { "$ref": "#/definitions/reviewer_verdict" } },
+    "findings": { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+    "dissent": { "type": "array", "items": { "type": "object" } },
+    "abstentions": { "type": "array", "items": { "$ref": "#/definitions/abstention" } },
+    "model": { "type": "string" },
+    "effort": { "type": "string" },
+    "transport": { "enum": ["direct"] }
+  },
+  "required": ["consensus_verdict"]
+}

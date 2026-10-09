@@ -1,0 +1,48 @@
+{
+  "job": {
+    "id": "task-8f3ac1",
+    "kind": "task",
+    "jobClass": "task",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-9a21",
+    "turnId": "turn-01",
+    "createdAt": "2026-07-30T14:02:11.000Z",
+    "completedAt": "2026-07-30T14:04:47.000Z",
+    "summary": "[task] sample-repo: normalize the poll trim for wait/status projections"
+  },
+  "storedJob": {
+    "id": "task-8f3ac1",
+    "kind": "task",
+    "jobClass": "task",
+    "title": "[task] sample-repo",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-9a21",
+    "turnId": "turn-01",
+    "workspaceRoot": "C:/projects/sample-repo",
+    "write": false,
+    "createdAt": "2026-07-30T14:02:11.000Z",
+    "startedAt": "2026-07-30T14:02:11.500Z",
+    "completedAt": "2026-07-30T14:04:47.000Z",
+    "summary": "[task] sample-repo: implement project.mjs pure projector",
+    "request": {
+      "cwd": "C:/projects/sample-repo",
+      "model": "gpt-5.6-terra",
+      "effort": "medium",
+      "write": false,
+      "resumeLast": false,
+      "jobId": "task-8f3ac1"
+    },
+    "result": {
+      "status": "completed",
+      "threadId": "thread-9a21",
+      "rawOutput": "RAWOUTPUT_ANSWER_MARKER: project.mjs now exposes extractAnswer/projectResult/projectWait/projectStatus; 7 fixtures added under tests/fixtures/jobs; full suite green.",
+      "touchedFiles": ["project.mjs", "tests/project.test.mjs"],
+      "reasoningSummary": null
+    },
+    "rendered": "# Codex Task\n\nRAWOUTPUT_ANSWER_MARKER: project.mjs now exposes extractAnswer/projectResult/projectWait/projectStatus; 7 fixtures added under tests/fixtures/jobs; full suite green.\n"
+  }
+}

@@ -1,0 +1,5 @@
+1. **SUCCEEDED** — `CANARY_VALUE_12345`
+
+2. **FAILED** — `Set-Content : Access to the path '.../a1-probe/probe-write.txt' is denied.`
+
+3. **FAILED** — `Add-Content : Access to the path '.../a1-probe/secret-read-test.txt' is denied.`

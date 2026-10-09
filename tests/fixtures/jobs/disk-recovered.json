@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "storedJob": {
+    "id": "task-d19f4a",
+    "kind": "task",
+    "jobClass": "task",
+    "title": "[task] sample-repo",
+    "status": "completed",
+    "phase": "done",
+    "pid": null,
+    "threadId": "thread-d1",
+    "workspaceRoot": "C:/projects/sample-repo",
+    "write": false,
+    "createdAt": "2026-07-23T11:40:00.000Z",
+    "startedAt": "2026-07-23T11:40:00.200Z",
+    "completedAt": "2026-07-23T11:42:18.000Z",
+    "summary": "[task] sample-repo: recover the store-race-dropped job",
+    "request": {
+      "cwd": "C:/projects/sample-repo",
+      "model": "gpt-5.6-terra",
+      "effort": "medium"
+    },
+    "result": {
+      "status": "completed",
+      "threadId": "thread-d1",
+      "rawOutput": "RAWOUTPUT_ANSWER_MARKER: disk-recovered rawOutput -- the store-race dropped this job's live record, but the on-disk file preserved the full answer text intact.",
+      "touchedFiles": [],
+      "reasoningSummary": null
+    },
+    "rendered": "# Codex Task\n\nRAWOUTPUT_ANSWER_MARKER: disk-recovered rawOutput -- the store-race dropped this job's live record, but the on-disk file preserved the full answer text intact.\n"
+  },
+  "_diskRecovered": true
+}

@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "node \"<CODEX_MCP>/hooks/gate-surface.mjs\"" } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "node \"<CODEX_MCP>/hooks/gate-surface.mjs\"", "env": { "CODEX_SURFACE_EVENT": "Stop" } } ] }
+    ]
+  }
+}
